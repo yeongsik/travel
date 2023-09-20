@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./main.css"
 
 import img1 from '../../assets/img1.jpg';
@@ -11,6 +11,7 @@ import img7 from '../../assets/img7.jpg';
 import img8 from '../../assets/img8.jpg';
 import img9 from '../../assets/img9.jpg';
 import {HiOutlineClipboardCheck, HiOutlineLocationMarker} from "react-icons/hi";
+import Aos from "aos";
 
 
 // example Data
@@ -109,10 +110,16 @@ const Data = [
 
 
 const Main = () => {
+
+    // Lets create a react hook to add a scroll animation
+    useEffect(() => {
+        Aos.init({duration: 2000})
+    }, []);
+
     return (
         <section className="main container section">
             <div className="secTitle">
-                <h3 className="title">
+                <h3 data-aos="fade-right" className="title">
                     Most visited destinations
                 </h3>
             </div>
@@ -125,7 +132,8 @@ const Main = () => {
                               }) => {
                         return (
                             <>
-                            <div key={id} className="singleDestination">
+                            <div key={id} data-aos="fade-up"
+                                 className="singleDestination">
 
                                 <div className="imageDiv">
                                     <img src={imgSrc} alt={destTitle}/>
